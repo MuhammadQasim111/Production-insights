@@ -1,33 +1,48 @@
-import pandas as pd
-import numpy as np
+# 🏭 Data-Driven Supplier & Quality Analysis  
+[![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)  
+[![Data Analysis](https://img.shields.io/badge/Focus-Data%20Cleaning%20%26%20Analytics-brightgreen)](#)  
+[![GitHub License](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)  
+[![LinkedIn](https://img.shields.io/badge/Connect-Muhammad%20Qasim-blue?logo=linkedin)](https://www.linkedin.com/in/muhammad-qasim-a99057265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)  
 
-# Load the original table
-data = pd.read_csv("production_data.csv")
+---
 
-# --- Minimal cleaning relevant to this task ---
-# Ensure supplier is numeric even if stored as strings with spaces, etc.
-data['raw_material_supplier'] = pd.to_numeric(
-    data['raw_material_supplier'].astype(str).str.strip(), errors='coerce'
-)
+## 📌 Project Overview  
+This repository contains my project **“Supplier Insights for Product Quality Optimization”**, built during the **DataCamp Python Data Associate Certification**.  
 
-# Ensure numeric types for calculations
-data['pigment_quantity'] = pd.to_numeric(data['pigment_quantity'], errors='coerce')
-data['product_quality_score'] = pd.to_numeric(data['product_quality_score'], errors='coerce')
+While the certification tested technical skills, I extended it into a **real-world business case**:  
+🔹 How supplier type and material usage affect final product quality.  
+🔹 How to clean messy data and extract actionable insights.  
+🔹 How businesses can make **data-driven decisions** for cost savings & quality improvement.  
 
-# --- EXTRACT DATA BASED ON DIFFERENT CONDITIONS ---
-# Condition 1: supplier equals 2
-# Condition 2: pigment_quantity > 35
-filtered = data.query("raw_material_supplier == 2 and pigment_quantity > 35")
+---
 
-# Compute required averages (rounded to 2 decimals)
-avg_qty = round(filtered['pigment_quantity'].mean(), 2)
-avg_score = round(filtered['product_quality_score'].mean(), 2)
+## 🚀 Business Value  
+This project directly addresses real-world challenges in **manufacturing & supply chain management**:  
 
-# Build 1-row output DataFrame with required columns
-pigment_data = pd.DataFrame({
-    'raw_material_supplier': [2],
-    'pigment_quantity': [avg_qty],
-    'avg_product_quality_score': [avg_score]
-})
+- ✅ **Supplier Performance:** Identify which suppliers consistently provide higher-quality raw materials.  
+- ✅ **Material Optimization:** Find the “sweet spot” for pigment usage that balances cost and quality.  
+- ✅ **Data Integrity:** Build trust in decision-making by cleaning and validating production datasets.  
+- ✅ **Targeted Quality Improvements:** Detect conditions that lead to poor quality and recommend fixes.  
 
-print(pigment_data)
+📊 **Impact** → Companies can **reduce costs, negotiate better contracts, minimize waste, and boost product quality** with the insights from this analysis.  
+
+---
+
+## 🗂️ Repository Structure  
+📂 supplier-quality-analysis
+┣ 📜 README.md <- You are here
+┣ 📜 Task1_data_loading.py <- Data loading & integrity checks
+┣ 📜 Task2_supplier_agg.py <- Aggregation: supplier vs. quality & pigments
+┣ 📜 Task3_filtering_query.py <- Conditional queries & quality scoring
+┣ 📜 Task4_stats_analysis.py <- Data transformation & statistical insights
+┗ 📜 production_data.csv <- Example dataset (anonymized / cleaned)
+
+## 📢 Connect With Me  
+I love transforming raw data into **business value**. Let’s connect!  
+
+👤 [Muhammad Qasim](https://www.linkedin.com/in/muhammad-qasim-a99057265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)  
+
+---
+
+⭐ If you find this project useful, please **star this repo** and share your feedback!  
+
